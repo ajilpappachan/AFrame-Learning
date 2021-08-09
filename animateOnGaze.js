@@ -7,12 +7,15 @@ AFRAME.registerComponent("animate-on-gaze", {
 		const data = this.data;
 		const el = this.el;
 
+		el.setAttribute("animation", "pauseEvents", "pause");
+		el.setAttribute("animation", "resumeEvents", "play");
+
 		el.addEventListener("mouseenter", function () {
-			el.setAttribute("animation", "enabled", data.value);
+			el.emit(data.value ? "play" : "pause");
 		});
 
 		el.addEventListener("mouseleave", function () {
-			el.setAttribute("animation", "enabled", !data.value);
+			el.emit(data.value ? "pause" : "play");
 		});
 	},
 });
