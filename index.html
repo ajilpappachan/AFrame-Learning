@@ -6,10 +6,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>A Frame AR</title>
 		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+		<script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+		<script src="/animateOnGaze.js"></script>
 	</head>
 	<body>
 		<a-scene>
-			<a-box color="#03a9f4" width="1" height="1" depth="1"></a-box>
+			<a-assets>
+				<img src="/assets/texture.jpg" id="texture" />
+			</a-assets>
+			<a-camera>
+				<a-cursor></a-cursor>
+			</a-camera>
+			<a-box
+				src="#texture"
+				position="0 0 -2"
+				scale="1 1 1"
+				animation="property: rotation; to: 0 360 0; dur: 5000; loop:true; easing: linear"
+				animate-on-gaze="value: false"
+			></a-box>
 		</a-scene>
 	</body>
 </html>
